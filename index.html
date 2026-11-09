@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belajar Teks Eksplanasi / Learn Explanatory Text - BIPA 2</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Fredoka & Inter -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#3B82F6',
+              purple: '#8B5CF6',
+              pink: '#EC4899',
+              yellow: '#F59E0B',
+              green: '#10B981',
+              bg: '#F0F9FF'
+            }
+          },
+          fontFamily: {
+            fredoka: ['Fredoka', 'sans-serif'],
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #F0F9FF; }
+    h1, h2, h3, .font-fun { font-family: 'Fredoka', sans-serif; }
+    
+    .badge-structure {
+      transition: all 0.2s ease;
+    }
+    .badge-structure:hover {
+      transform: scale(1.03);
+    }
+    
+    @media print {
+      body * { visibility: hidden; }
+      #printable-certificate, #printable-certificate * { visibility: visible; }
+      #printable-certificate { position: absolute; left: 0; top: 0; width: 100%; }
+    }
+  </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- NAVIGATION HEADER -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
+      <div class="flex items-center gap-3">
+        <div class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-3 rounded-2xl shadow-md">
+          <i class="fa-solid fa-cloud-sun-rain text-2xl"></i>
+        </div>
+        <div>
+          <h1 class="text-xl md:text-2xl font-bold text-slate-800 leading-tight">Teks Eksplanasi <span class="text-blue-600 text-base font-normal">| BIPA 2 / SD 2</span></h1>
+          <p class="text-xs text-slate-500">Learning Explanatory Text Dwibahasa (ID - EN)</p>
+        </div>
+      </div>
+
+      <!-- Language Toggle Switcher -->
+      <div class="flex items-center bg-slate-100 p-1.5 rounded-xl border border-slate-200">
+        <span class="text-xs font-semibold mr-2 text-slate-600 ml-1"><i class="fa-solid fa-globe mr-1"></i> Bahasa:</span>
+        <button id="lang-btn-id" onclick="setLanguage('id')" class="px-3 py-1 text-xs font-bold rounded-lg transition-all bg-blue-600 text-white shadow-sm">ID</button>
+        <button id="lang-btn-dual" onclick="setLanguage('dual')" class="px-3 py-1 text-xs font-bold rounded-lg transition-all text-slate-600 hover:bg-slate-200">ID + EN</button>
+        <button id="lang-btn-en" onclick="setLanguage('en')" class="px-3 py-1 text-xs font-bold rounded-lg transition-all text-slate-600 hover:bg-slate-200">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-6xl mx-auto px-4 py-6 w-full flex-grow">
+
+    <!-- TAB BUTTONS -->
+    <div class="flex gap-3 mb-6">
+      <button id="tab-read-btn" onclick="switchTab('read')" class="flex-1 py-3 px-4 rounded-xl font-bold text-base md:text-lg flex items-center justify-center gap-2 bg-blue-600 text-white shadow-lg shadow-blue-200 transition-all">
+        <i class="fa-solid fa-book-open"></i>
+        <span class="lang-text" data-id="Materi &amp; Teks Bacaan" data-en="Material &amp; Reading Text" data-dual="Materi &amp; Reading Text">Materi &amp; Teks Bacaan</span>
+      </button>
+      <button id="tab-quiz-btn" onclick="switchTab('quiz')" class="flex-1 py-3 px-4 rounded-xl font-bold text-base md:text-lg flex items-center justify-center gap-2 bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all">
+        <i class="fa-solid fa-gamepad"></i>
+        <span class="lang-text" data-id="Kuis Interaktif (20 Soal)" data-en="Interactive Quiz (20 Qs)" data-dual="Kuis Interaktif (20 Qs)">Kuis Interaktif (20 Soal)</span>
+      </button>
+    </div>
+
+    <!-- SECTION 1: READING & IDENTIFICATION -->
+    <section id="section-read" class="space-y-6">
+      <!-- Brief Material Card -->
+      <div class="bg-gradient-to-r from-sky-400 to-blue-500 rounded-3xl p-6 text-white shadow-md relative overflow-hidden">
+        <div class="relative z-10">
+          <span class="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Ringkasan Materi / Overview</span>
+          <h2 class="text-2xl md:text-3xl font-bold mt-2 mb-3">Apa itu Teks Eksplanasi? / What is Explanatory Text?</h2>
+          <p class="text-white/90 text-sm md:text-base leading-relaxed max-w-3xl">
+            <span class="lang-text" 
+                  data-id="Teks Eksplanasi adalah teks yang menjelaskan PROSES terjadinya suatu fenomena alam atau sosial. Teks ini menjawab pertanyaan 'Bagaimana' dan 'Mengapa'."
+                  data-en="Explanatory Text is a text that explains the PROCESS of how or why natural or social phenomena happen. It answers 'How' and 'Why'."
+                  data-dual="Teks Eksplanasi menjelaskan PROSES terjadinya fenomena alam (How &amp; Why natural events happen).">
+              Teks Eksplanasi adalah teks yang menjelaskan PROSES terjadinya suatu fenomena alam atau sosial. Teks ini menjawab pertanyaan 'Bagaimana' dan 'Mengapa'.
+            </span>
+          </p>
+        </div>
+        <i class="fa-solid fa-rainbow absolute -right-6 -bottom-6 text-9xl text-white/10 pointer-events-none"></i>
+      </div>
+
+      <!-- Interactive Reading Container -->
+      <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-slate-100">
+        <div class="flex justify-between items-center mb-6 pb-4 border-b border-slate-100 flex-wrap gap-2">
+          <div>
+            <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">Contoh Teks / Example Text</span>
+            <h3 class="text-2xl font-bold text-slate-800">Bagaimana Pelangi Terjadi? / How Rainbows Form?</h3>
+          </div>
+          <div class="text-xs text-slate-500 bg-amber-50 px-3 py-1.5 rounded-lg border border-amber-200 flex items-center gap-1.5">
+            <i class="fa-solid fa-lightbulb text-amber-500"></i>
+            <span>Klik tombol bagian untuk melihat struktur!</span>
+          </div>
+        </div>
+
+        <!-- Text Breakdown with Color Codes -->
+        <div class="space-y-4 text-base leading-relaxed">
+          
+          <!-- Judul -->
+          <div class="p-4 rounded-2xl border-2 border-slate-200 bg-slate-50 hover:border-slate-300 transition-all">
+            <div class="flex items-center justify-between mb-2">
+              <span class="bg-slate-700 text-white text-xs px-2.5 py-1 rounded-md font-bold">Judul / Title</span>
+            </div>
+            <h4 class="text-xl font-bold text-blue-600">Bagaimana Pelangi Terjadi?</h4>
+            <p class="text-slate-500 text-sm italic">How Do Rainbows Form?</p>
+          </div>
+
+          <!-- Section 1: Pernyataan Umum -->
+          <div class="p-5 rounded-2xl border-2 border-blue-200 bg-blue-50/50 hover:bg-blue-50 transition-all">
+            <div class="flex items-center justify-between mb-2">
+              <span class="bg-blue-600 text-white text-xs px-2.5 py-1 rounded-md font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-circle-1"></i> Pernyataan Umum / Introduction
+              </span>
+              <span class="text-xs text-blue-600 font-semibold">(Mengenalkan topik / Introduces topic)</span>
+            </div>
+            <p class="text-slate-800 font-medium text-base mb-1">
+              Pelangi adalah pemandangan alam yang sangat indah di langit. Pelangi memiliki banyak warna seperti merah, kuning, hijau, dan biru. Pelangi biasanya muncul setelah hujan turun.
+            </p>
+            <p class="text-slate-500 text-sm italic">
+              A rainbow is a beautiful natural sight in the sky. It has many colors like red, yellow, green, and blue. Rainbows usually appear after it rains.
+            </p>
+          </div>
+
+          <!-- Section 2: Deretan Penjelas -->
+          <div class="p-5 rounded-2xl border-2 border-emerald-200 bg-emerald-50/50 hover:bg-emerald-50 transition-all">
+            <div class="flex items-center justify-between mb-2">
+              <span class="bg-emerald-600 text-white text-xs px-2.5 py-1 rounded-md font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-circle-2"></i> Deretan Penjelas / Sequence of Explanation
+              </span>
+              <span class="text-xs text-emerald-600 font-semibold">(Proses terjadi / Process of how it happens)</span>
+            </div>
+            <p class="text-slate-800 font-medium text-base mb-2">
+              Bagaimana pelangi bisa terjadi? <strong>Pertama</strong>, matahari kembali bersinar setelah hujan. Di udara, masih ada titik-titik air hujan. <strong>Kemudian</strong>, sinar matahari menembus titik-titik air tersebut. Air membiaskan dan memantulkan sinar matahari sehingga menjadi warna-warni yang mempesona.
+            </p>
+            <p class="text-slate-500 text-sm italic">
+              How do rainbows form? First, the sun shines again after the rain. There are still small raindrops in the air. Then, sunlight passes through the raindrops. The water bends and reflects the light into beautiful colors.
+            </p>
+          </div>
+
+          <!-- Section 3: Penutup / Kesimpulan -->
+          <div class="p-5 rounded-2xl border-2 border-purple-200 bg-purple-50/50 hover:bg-purple-50 transition-all">
+            <div class="flex items-center justify-between mb-2">
+              <span class="bg-purple-600 text-white text-xs px-2.5 py-1 rounded-md font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-circle-3"></i> Penutup / Conclusion
+              </span>
+              <span class="text-xs text-purple-600 font-semibold">(Kesimpulan / Summary)</span>
+            </div>
+            <p class="text-slate-800 font-medium text-base mb-1">
+              Itulah sebabnya pelangi bisa terlihat. Kita dapat melihat pelangi jika ada sinar matahari dan rintik hujan pada saat yang sama.
+            </p>
+            <p class="text-slate-500 text-sm italic">
+              That is why we can see a rainbow. We can see it only when there is sunlight and rain droplets at the same time.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Quick Summary Box -->
+        <div class="mt-6 bg-slate-50 p-4 rounded-xl border border-slate-200">
+          <h5 class="font-bold text-slate-700 text-sm mb-2"><i class="fa-solid fa-key text-amber-500 mr-1"></i> Kata Kunci Urutan Waktu / Time Sequence Words:</h5>
+          <div class="flex flex-wrap gap-2 text-xs font-semibold">
+            <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full">Pertama / First</span>
+            <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full">Kemudian / Then</span>
+            <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full">Lalu / Next</span>
+            <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full">Akhirnya / Finally</span>
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <div class="mt-8 text-center">
+          <button onclick="switchTab('quiz')" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg px-8 py-3.5 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all inline-flex items-center gap-2">
+            <span>Mulai Kuis Interaktif Sekarang</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: INTERACTIVE QUIZ -->
+    <section id="section-quiz" class="hidden space-y-6">
+      
+      <!-- Quiz Setup Panel / Start Screen -->
+      <div id="quiz-start-screen" class="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 text-center max-w-xl mx-auto space-y-6">
+        <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto text-blue-600 text-3xl">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-slate-800 mb-2">Kuis Teks Eksplanasi (20 Soal)</h2>
+          <p class="text-slate-500 text-sm">Uji pemahamanmu tentang teks eksplanasi dalam dua bahasa!</p>
+        </div>
+
+        <div class="text-left space-y-4 bg-slate-50 p-4 rounded-2xl">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Nama Siswa / Student Name:</label>
+            <input type="text" id="user-name" placeholder="Masukkan namamu / Enter your name..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-semibold">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-left text-xs text-slate-600 font-medium">
+          <div class="bg-blue-50 p-3 rounded-xl flex items-center gap-2">
+            <i class="fa-solid fa-clock text-blue-600 text-lg"></i>
+            <span>Waktu: Bebas / No strict limit</span>
+          </div>
+          <div class="bg-emerald-50 p-3 rounded-xl flex items-center gap-2">
+            <i class="fa-solid fa-check-circle text-emerald-600 text-lg"></i>
+            <span>20 Soal Pilihan Ganda</span>
+          </div>
+        </div>
+
+        <button onclick="startQuiz()" class="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-lg rounded-2xl shadow-lg shadow-emerald-200 transition-all flex items-center justify-center gap-2">
+          <i class="fa-solid fa-play"></i>
+          <span>Mulai Kerjakan / Start Quiz</span>
+        </button>
+      </div>
+
+      <!-- Quiz Main Interactive View -->
+      <div id="quiz-active-screen" class="hidden space-y-6">
+        
+        <!-- Status Header Bar -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex justify-between items-center flex-wrap gap-4">
+          <div class="flex items-center gap-4">
+            <div class="text-xs font-semibold text-slate-500">
+              Siswa: <span id="display-user-name" class="font-bold text-slate-800">Siswa</span>
+            </div>
+            <div class="bg-slate-100 text-slate-700 text-xs px-3 py-1 rounded-full font-bold">
+              Soal <span id="current-q-num">1</span> / 20
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="w-full md:w-48 bg-slate-100 rounded-full h-3 overflow-hidden">
+            <div id="quiz-progress-bar" class="bg-blue-600 h-full w-0 transition-all duration-300"></div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <div class="text-xs font-bold text-amber-600 bg-amber-50 px-3 py-1 rounded-lg border border-amber-200">
+              <i class="fa-regular fa-clock mr-1"></i><span id="quiz-timer">00:00</span>
+            </div>
+            <div class="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-lg border border-blue-200">
+              Skor: <span id="live-score">0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-slate-100 space-y-6">
+          
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase" id="q-category">Kategori Soal</span>
+            <h3 id="question-text-id" class="text-xl md:text-2xl font-bold text-slate-800 leading-snug">
+              <!-- Indonesian Question -->
+            </h3>
+            <p id="question-text-en" class="text-sm md:text-base text-slate-500 italic">
+              <!-- English Question -->
+            </p>
+          </div>
+
+          <!-- Options Container -->
+          <div id="options-container" class="grid grid-cols-1 gap-3">
+            <!-- Options dynamically injected -->
+          </div>
+
+          <!-- Immediate Feedback Box -->
+          <div id="feedback-box" class="hidden p-4 rounded-2xl text-sm font-medium transition-all space-y-1">
+            <div id="feedback-title" class="font-bold flex items-center gap-2"></div>
+            <p id="feedback-desc" class="text-slate-700"></p>
+          </div>
+
+          <!-- Navigation Footer -->
+          <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+            <button id="prev-btn" onclick="navigateQuestion(-1)" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-sm font-bold rounded-xl disabled:opacity-40 disabled:cursor-not-allowed">
+              <i class="fa-solid fa-chevron-left mr-1"></i> Sebelum
+            </button>
+            <button id="next-btn" onclick="navigateQuestion(1)" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-md disabled:opacity-40">
+              Selanjutnya <i class="fa-solid fa-chevron-right ml-1"></i>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Quiz Summary & Certificate Screen -->
+      <div id="quiz-result-screen" class="hidden space-y-6">
+        
+        <!-- Result Header Card -->
+        <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 text-center max-w-2xl mx-auto space-y-6">
+          <div class="w-24 h-24 rounded-full flex items-center justify-center mx-auto text-4xl shadow-inner" id="result-badge-icon">
+            🏆
+          </div>
+
+          <div>
+            <h2 class="text-3xl font-bold text-slate-800" id="result-title">Selamat! / Great Job!</h2>
+            <p class="text-slate-500 text-sm mt-1" id="result-subtitle">Kamu telah menyelesaikan kuis Teks Eksplanasi.</p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4 bg-slate-50 p-4 rounded-2xl">
+            <div>
+              <div class="text-xs text-slate-500 font-semibold">Skor Akhir</div>
+              <div class="text-3xl font-extrabold text-blue-600" id="final-score-val">0</div>
+            </div>
+            <div>
+              <div class="text-xs text-slate-500 font-semibold">Jawaban Benar</div>
+              <div class="text-3xl font-extrabold text-emerald-600" id="correct-count-val">0/20</div>
+            </div>
+            <div>
+              <div class="text-xs text-slate-500 font-semibold">Waktu Total</div>
+              <div class="text-2xl font-bold text-amber-600 mt-1" id="final-time-val">00:00</div>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="flex flex-wrap gap-3 justify-center">
+            <button onclick="downloadPDFReport()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md flex items-center gap-2">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              <span>Unduh / Cetak Laporan Hasil (PDF)</span>
+            </button>
+            <button onclick="resetQuiz()" class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl flex items-center gap-2">
+              <i class="fa-solid fa-rotate-right"></i>
+              <span>Coba Lagi / Retry</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Detailed Breakdown -->
+        <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-slate-100 space-y-4">
+          <h3 class="text-lg font-bold text-slate-800 border-b pb-3">Rincian Jawaban / Answer Details</h3>
+          <div id="answers-breakdown-list" class="space-y-3">
+            <!-- Dynamically populated breakdown -->
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- PRINTABLE CERTIFICATE TEMPLATE (Hidden from UI, visible in Print/PDF) -->
+  <div id="printable-certificate" class="hidden p-8 bg-white border-8 border-blue-600 rounded-3xl text-center space-y-6 my-4 max-w-3xl mx-auto">
+    <div class="text-blue-600 text-5xl"><i class="fa-solid fa-award"></i></div>
+    <h1 class="text-3xl font-extrabold text-slate-900 tracking-wide uppercase">Laporan Hasil Kuis Teks Eksplanasi</h1>
+    <p class="text-sm text-slate-500">BIPA Level 2 / Kelas 2 Sekolah Dasar</p>
+    
+    <div class="w-full border-t-2 border-b-2 border-slate-200 py-4 my-4 space-y-2">
+      <p class="text-lg">Diberikan Kepada / Awarded to:</p>
+      <h2 class="text-3xl font-bold text-blue-700" id="pdf-user-name">Nama Siswa</h2>
+      <p class="text-sm text-slate-600">Tanggal: <span id="pdf-date">10 November 2026</span></p>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4 text-center my-6">
+      <div class="bg-slate-100 p-4 rounded-xl">
+        <p class="text-xs text-slate-500 font-bold">TOTAL SKOR</p>
+        <p class="text-3xl font-extrabold text-blue-600" id="pdf-score">100</p>
+      </div>
+      <div class="bg-slate-100 p-4 rounded-xl">
+        <p class="text-xs text-slate-500 font-bold">BENAR / TOTAL</p>
+        <p class="text-3xl font-extrabold text-emerald-600" id="pdf-correct">20 / 20</p>
+      </div>
+      <div class="bg-slate-100 p-4 rounded-xl">
+        <p class="text-xs text-slate-500 font-bold">WAKTU</p>
+        <p class="text-2xl font-bold text-slate-700 mt-1" id="pdf-time">02:30</p>
+      </div>
+    </div>
+
+    <div class="text-left text-xs text-slate-600 space-y-2 border-t pt-4">
+      <p class="font-bold">Status Pemahaman:</p>
+      <p id="pdf-evaluation-text">Sangat Baik! Siswa telah menguasai pengertian, struktur, dan kata kunci teks eksplanasi dwibahasa.</p>
+    </div>
+
+    <div class="pt-8 flex justify-between items-end text-xs text-slate-400">
+      <div>Verifikasi Otomatis Aplikasi Pembelajaran BIPA</div>
+      <div>Guru / Pengajar Bahasa Indonesia</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-4 mt-8">
+    <div class="max-w-6xl mx-auto px-4 text-center text-xs text-slate-500">
+      Materi Teks Eksplanasi Dwibahasa (Indonesian - English) • BIPA Level 2 / SD Kelas 2
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // --- 20 BILINGUAL QUESTIONS BANK ---
+    const questionBank = [
+      {
+        id: 1,
+        cat: "Pengertian / Definition",
+        qID: "Apa yang dijelaskan dalam Teks Eksplanasi?",
+        qEN: "What does an Explanatory Text explain?",
+        options: [
+          { id: "A", textID: "Proses terjadinya sesuatu", textEN: "The process of how something happens" },
+          { id: "B", textID: "Resep membuat makanan", textEN: "Food recipe" },
+          { id: "C", textID: "Cerita dongeng sebelum tidur", textEN: "Bedtime fairy tale" }
+        ],
+        answer: "A",
+        explainID: "Teks eksplanasi menjelaskan proses bagaimana atau mengapa suatu peristiwa terjadi.",
+        explainEN: "Explanatory text explains the process of how or why an event happens."
+      },
+      {
+        id: 2,
+        cat: "Pertanyaan Utama / Core Questions",
+        qID: "Teks eksplanasi biasanya menjawab pertanyaan apa?",
+        qEN: "Explanatory text usually answers which questions?",
+        options: [
+          { id: "A", textID: "Siapa dan Di mana?", textEN: "Who and Where?" },
+          { id: "B", textID: "Bagaimana dan Mengapa?", textEN: "How and Why?" },
+          { id: "C", textID: "Berapa harganya?", textEN: "How much is it?" }
+        ],
+        answer: "B",
+        explainID: "Teks eksplanasi fokus pada 'Bagaimana' (proses) dan 'Mengapa' (sebab-akibat).",
+        explainEN: "Explanatory texts focus on 'How' (process) and 'Why' (cause-effect)."
+      },
+      {
+        id: 3,
+        cat: "Topik Teks / Topics",
+        qID: "Manakah contoh fenomena alam?",
+        qEN: "Which one is an example of a natural phenomenon?",
+        options: [
+          { id: "A", textID: "Hujan dan pelangi", textEN: "Rain and rainbow" },
+          { id: "B", textID: "Bermain sepeda", textEN: "Riding a bicycle" },
+          { id: "C", textID: "Membaca buku", textEN: "Reading a book" }
+        ],
+        answer: "A",
+        explainID: "Hujan dan pelangi adalah fenomena alam yang dijelaskan dalam teks eksplanasi.",
+        explainEN: "Rain and rainbow are natural phenomena described in explanatory texts."
+      },
+      {
+        id: 4,
+        cat: "Struktur / Structure",
+        qID: "Bagian pertama teks eksplanasi disebut apa?",
+        qEN: "What is the first part of an explanatory text called?",
+        options: [
+          { id: "A", textID: "Pernyataan Umum (Pengenalan)", textEN: "General Statement (Introduction)" },
+          { id: "B", textID: "Penutup", textEN: "Conclusion" },
+          { id: "C", textID: "Judul resep", textEN: "Recipe title" }
+        ],
+        answer: "A",
+        explainID: "Pernyataan Umum berguna mengenalkan topik awal yang akan dijelaskan.",
+        explainEN: "General Statement introduces the initial topic to be explained."
+      },
+      {
+        id: 5,
+        cat: "Struktur / Structure",
+        qID: "Bagian yang berisi urutan proses kejadian disebut...",
+        qEN: "The part containing the sequence of events is called...",
+        options: [
+          { id: "A", textID: "Deretan Penjelas", textEN: "Sequence of Explanation" },
+          { id: "B", textID: "Pernyataan Umum", textEN: "General Statement" },
+          { id: "C", textID: "Daftar belanja", textEN: "Shopping list" }
+        ],
+        answer: "A",
+        explainID: "Deretan Penjelas berisi langkah-langkah atau urutan proses terjadinya sesuatu.",
+        explainEN: "Sequence of Explanation contains the step-by-step process of how something happens."
+      },
+      {
+        id: 6,
+        cat: "Struktur / Structure",
+        qID: "Bagian paling akhir dari teks eksplanasi adalah...",
+        qEN: "The very last part of an explanatory text is...",
+        options: [
+          { id: "A", textID: "Penutup / Interpretasi", textEN: "Conclusion / Summary" },
+          { id: "B", textID: "Pernyataan Umum", textEN: "General Statement" },
+          { id: "C", textID: "Gambar mewarnai", textEN: "Coloring picture" }
+        ],
+        answer: "A",
+        explainID: "Penutup memberikan kesimpulan ringkas dari seluruh cerita.",
+        explainEN: "Conclusion gives a brief summary of the whole text."
+      },
+      {
+        id: 7,
+        cat: "Kata Kunci / Connectors",
+        qID: "Kata urutan waktu yang sering digunakan adalah...",
+        qEN: "Time sequence words often used are...",
+        options: [
+          { id: "A", textID: "Pertama, kemudian, lalu", textEN: "First, then, next" },
+          { id: "B", textID: "Tetapi, namun, saja", textEN: "But, however, only" },
+          { id: "C", textID: "Bagus, cantik, cepat", textEN: "Good, pretty, fast" }
+        ],
+        answer: "A",
+        explainID: "Kata 'pertama' dan 'kemudian' menunjukkan urutan proses.",
+        explainEN: "Words like 'first' and 'then' show the sequence of process."
+      },
+      {
+        id: 8,
+        cat: "Pemahaman Bacaan / Reading",
+        qID: "Kapan pelangi biasanya terjadi?",
+        qEN: "When do rainbows usually happen?",
+        options: [
+          { id: "A", textID: "Setelah hujan turun dan ada sinar matahari", textEN: "After rain when there is sunlight" },
+          { id: "B", textID: "Saat malam hari yang gelap", textEN: "During a dark night" },
+          { id: "C", textID: "Saat angin kencang tanpa hujan", textEN: "During strong wind without rain" }
+        ],
+        answer: "A",
+        explainID: "Pelangi butuh titik air hujan dan sinar matahari secara bersamaan.",
+        explainEN: "Rainbows need both raindrops and sunlight at the same time."
+      },
+      {
+        id: 9,
+        cat: "Pemahaman Bacaan / Reading",
+        qID: "Apa yang membiaskan cahaya matahari hingga jadi pelangi?",
+        qEN: "What refracts sunlight to form a rainbow?",
+        options: [
+          { id: "A", textID: "Titik-titik air hujan", textEN: "Raindrops" },
+          { id: "B", textID: "Daun-daun hijau", textEN: "Green leaves" },
+          { id: "C", textID: "Batu-batu sungai", textEN: "River stones" }
+        ],
+        answer: "A",
+        explainID: "Air hujan bekerja membiaskan cahaya matahari menjadi warna-warni.",
+        explainEN: "Raindrops bend sunlight into multicolored light."
+      },
+      {
+        id: 10,
+        cat: "Karakteristik Teks / Characteristics",
+        qID: "Teks eksplanasi dibuat berdasarkan...",
+        qEN: "Explanatory text is written based on...",
+        options: [
+          { id: "A", textID: "Fakta dan kenyataan", textEN: "Facts and reality" },
+          { id: "B", textID: "Mimpi dan khayalan", textEN: "Dreams and fantasy" },
+          { id: "C", textID: "Lelucon lucu", textEN: "Funny jokes" }
+        ],
+        answer: "A",
+        explainID: "Teks eksplanasi bersifat faktual (sesuai fakta sains/kenyataan).",
+        explainEN: "Explanatory text is factual (based on science/reality)."
+      },
+      {
+        id: 11,
+        cat: "Tata Bahasa / Grammar",
+        qID: "Kata 'Matahari bersinar' merupakan contoh kata...",
+        qEN: "'Matahari bersinar' (Sun shines) is an example of...",
+        options: [
+          { id: "A", textID: "Kalimat aksi / kejadian nyata", textEN: "Action sentence / real event" },
+          { id: "B", textID: "Kalimat tanya", textEN: "Question sentence" },
+          { id: "C", textID: "Kalimat perintah", textEN: "Command sentence" }
+        ],
+        answer: "A",
+        explainID: "Menjelaskan fenomena yang terjadi secara alamiah.",
+        explainEN: "Explains phenomena occurring naturally."
+      },
+      {
+        id: 12,
+        cat: "Pemahaman Bacaan / Reading",
+        qID: "Sebutkan warna yang ADA pada pelangi!",
+        qEN: "Mention a color that IS on a rainbow!",
+        options: [
+          { id: "A", textID: "Merah, Kuning, Hijau", textEN: "Red, Yellow, Green" },
+          { id: "B", textID: "Hitam pekat", textEN: "Solid Black" },
+          { id: "C", textID: "Cokelat kayu", textEN: "Wood Brown" }
+        ],
+        answer: "A",
+        explainID: "Pelangi memiliki warna spektrum seperti merah, kuning, hijau, dan biru.",
+        explainEN: "Rainbows have spectrum colors such as red, yellow, green, and blue."
+      },
+      {
+        id: 13,
+        cat: "Topik Lain / Other Topics",
+        qID: "Manakah judul yang COCOK untuk teks eksplanasi?",
+        qEN: "Which title is SUITABLE for an explanatory text?",
+        options: [
+          { id: "A", textID: "Bagaimana Siang dan Malam Terjadi", textEN: "How Day and Night Happen" },
+          { id: "B", textID: "Kancil dan Buaya yang Cerdas", textEN: "The Mouse Deer and Crocodile" },
+          { id: "C", textID: "Cara Membuat Es Krim Enak", textEN: "How to Make Delicious Ice Cream" }
+        ],
+        answer: "A",
+        explainID: "Terjadinya siang dan malam adalah proses fenomena alam.",
+        explainEN: "The occurrence of day and night is a natural phenomenon process."
+      },
+      {
+        id: 14,
+        cat: "Sebab-Akibat / Cause-Effect",
+        qID: "Lengkapi: 'Matahari terbit, ..... hari menjadi terang.'",
+        qEN: "Complete: 'Sun rises, ..... day becomes bright.'",
+        options: [
+          { id: "A", textID: "sehingga / so that", textEN: "so that" },
+          { id: "B", textID: "tetapi / but", textEN: "but" },
+          { id: "C", textID: "atau / or", textEN: "or" }
+        ],
+        answer: "A",
+        explainID: "Kata 'sehingga' menunjukkan hubungan sebab-akibat.",
+        explainEN: "The word 'so that / sehingga' shows cause-and-effect relationship."
+      },
+      {
+        id: 15,
+        cat: "Urutan / Sequence",
+        qID: "Manakah urutan kata yang benar?",
+        qEN: "Which word order is correct?",
+        options: [
+          { id: "A", textID: "Pertama -> Kemudian -> Akhirnya", textEN: "First -> Then -> Finally" },
+          { id: "B", textID: "Akhirnya -> Pertama -> Kemudian", textEN: "Finally -> First -> Then" },
+          { id: "C", textID: "Kemudian -> Akhirnya -> Pertama", textEN: "Then -> Finally -> First" }
+        ],
+        answer: "A",
+        explainID: "Urutan kejadian dimulai dari 'Pertama' lalu 'Kemudian' dan ditutup 'Akhirnya'.",
+        explainEN: "The sequence starts with 'First', followed by 'Then', and ends with 'Finally'."
+      },
+      {
+        id: 16,
+        cat: "Identifikasi / Identification",
+        qID: "Teks eksplanasi TERDIRI DARI berapa bagian utama?",
+        qEN: "How many main parts does an explanatory text HAVE?",
+        options: [
+          { id: "A", textID: "3 bagian (Pernyataan Umum, Penjelas, Penutup)", textEN: "3 parts (Introduction, Sequence, Conclusion)" },
+          { id: "B", textID: "10 bagian", textEN: "10 parts" },
+          { id: "C", textID: "1 bagian saja", textEN: "Only 1 part" }
+        ],
+        answer: "A",
+        explainID: "Tiga bagian utamanya: Pernyataan Umum, Deretan Penjelas, dan Penutup.",
+        explainEN: "Three main parts: General Statement, Sequence of Explanation, and Conclusion."
+      },
+      {
+        id: 17,
+        cat: "Istilah Sains / Science Terms",
+        qID: "Dalam teks pelangi, air hujan 'memantulkan' cahaya. Memantulkan berarti...",
+        qEN: "In the rainbow text, raindrops 'reflect' light. Reflect means...",
+        options: [
+          { id: "A", textID: "Memancarkan kembali cahaya", textEN: "Bouncing light back" },
+          { id: "B", textID: "Membuang air", textEN: "Throwing water away" },
+          { id: "C", textID: "Menutup mata", textEN: "Closing eyes" }
+        ],
+        answer: "A",
+        explainID: "Memantulkan (reflect) adalah peristiwa cahaya memantul pada titik air.",
+        explainEN: "Reflecting (memantulkan) is light bouncing off the raindrops."
+      },
+      {
+        id: 18,
+        cat: "Tujuan Teks / Purpose",
+        qID: "Apa tujuan kita membaca teks eksplanasi?",
+        qEN: "What is our purpose in reading an explanatory text?",
+        options: [
+          { id: "A", textID: "Memahami proses suatu kejadian", textEN: "Understanding the process of an event" },
+          { id: "B", textID: "Mencari hiburan tertawa", textEN: "Looking for funny entertainment" },
+          { id: "C", textID: "Membeli barang di toko", textEN: "Buying things at a shop" }
+        ],
+        answer: "A",
+        explainID: "Tujuannya untuk memberi ilmu pengetahuan tentang bagaimana sesuatu terjadi.",
+        explainEN: "The purpose is to provide knowledge about how something happens."
+      },
+      {
+        id: 19,
+        cat: "Benar atau Salah / True or False",
+        qID: "Pelangi BISA terlihat tanpa adanya cahaya matahari. (Benar atau Salah?)",
+        qEN: "Rainbows CAN be seen without sunlight. (True or False?)",
+        options: [
+          { id: "A", textID: "Salah (Butuh sinar matahari)", textEN: "False (Needs sunlight)" },
+          { id: "B", textID: "Benar", textEN: "True" },
+          { id: "C", textID: "Tidak tahu", textEN: "Don't know" }
+        ],
+        answer: "A",
+        explainID: "Salah! Pelangi tidak bisa terbentuk tanpa adanya sinar matahari.",
+        explainEN: "False! A rainbow cannot form without sunlight."
+      },
+      {
+        id: 20,
+        cat: "Kesimpulan / Summary",
+        qID: "Apa pesan utama dari pelajaran teks eksplanasi?",
+        qEN: "What is the main lesson from explanatory text?",
+        options: [
+          { id: "A", textID: "Selalu ingin tahu MENGAPA dan BAGAIMANA alam bekerja", textEN: "Always curious WHY and HOW nature works" },
+          { id: "B", textID: "Jangan pernah bertanya", textEN: "Never ask questions" },
+          { id: "C", textID: "Hanya menghafal tanpa paham", textEN: "Just memorize without understanding" }
+        ],
+        answer: "A",
+        explainID: "Teks eksplanasi mengajak kita belajar mengamati fenomena di sekitar kita.",
+        explainEN: "Explanatory text encourages us to observe phenomena around us."
+      }
+    ];
+
+    // --- APP STATE ---
+    let currentLang = 'dual'; // 'id', 'en', 'dual'
+    let currentQIndex = 0;
+    let userAnswers = {}; // { qIndex: selectedOptionId }
+    let quizStartTime = null;
+    let quizTimerInterval = null;
+    let userName = "Siswa BIPA";
+
+    // --- LANGUAGE SWITCHER LOGIC ---
+    function setLanguage(lang) {
+      currentLang = lang;
+      
+      // Update UI button states
+      ['id', 'dual', 'en'].forEach(l => {
+        const btn = document.getElementById(`lang-btn-${l}`);
+        if(l === lang) {
+          btn.className = "px-3 py-1 text-xs font-bold rounded-lg transition-all bg-blue-600 text-white shadow-sm";
+        } else {
+          btn.className = "px-3 py-1 text-xs font-bold rounded-lg transition-all text-slate-600 hover:bg-slate-200";
+        }
+      });
+
+      // Update static text marked with .lang-text
+      document.querySelectorAll('.lang-text').forEach(el => {
+        const text = el.getAttribute(`data-${lang}`);
+        if (text) el.textContent = text;
+      });
+
+      // Re-render question if quiz active
+      if (!document.getElementById('quiz-active-screen').classList.contains('hidden')) {
+        renderQuestion();
+      }
+    }
+
+    // --- TAB NAVIGATION ---
+    function switchTab(tab) {
+      const readSec = document.getElementById('section-read');
+      const quizSec = document.getElementById('section-quiz');
+      const readBtn = document.getElementById('tab-read-btn');
+      const quizBtn = document.getElementById('tab-quiz-btn');
+
+      if (tab === 'read') {
+        readSec.classList.remove('hidden');
+        quizSec.classList.add('hidden');
+        readBtn.className = "flex-1 py-3 px-4 rounded-xl font-bold text-base md:text-lg flex items-center justify-center gap-2 bg-blue-600 text-white shadow-lg shadow-blue-200 transition-all";
+        quizBtn.className = "flex-1 py-3 px-4 rounded-xl font-bold text-base md:text-lg flex items-center justify-center gap-2 bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all";
+      } else {
+        readSec.classList.add('hidden');
+        quizSec.classList.remove('hidden');
+        quizBtn.className = "flex-1 py-3 px-4 rounded-xl font-bold text-base md:text-lg flex items-center justify-center gap-2 bg-blue-600 text-white shadow-lg shadow-blue-200 transition-all";
+        readBtn.className = "flex-1 py-3 px-4 rounded-xl font-bold text-base md:text-lg flex items-center justify-center gap-2 bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all";
+      }
+    }
+
+    // --- QUIZ LOGIC ---
+    function startQuiz() {
+      const inputName = document.getElementById('user-name').value.trim();
+      userName = inputName !== "" ? inputName : "Siswa BIPA";
+      document.getElementById('display-user-name').textContent = userName;
+
+      // Reset states
+      currentQIndex = 0;
+      userAnswers = {};
+      quizStartTime = new Date();
+      startTimer();
+
+      // Switch screens
+      document.getElementById('quiz-start-screen').classList.add('hidden');
+      document.getElementById('quiz-result-screen').classList.add('hidden');
+      document.getElementById('quiz-active-screen').classList.remove('hidden');
+
+      renderQuestion();
+    }
+
+    function startTimer() {
+      clearInterval(quizTimerInterval);
+      quizTimerInterval = setInterval(() => {
+        const now = new Date();
+        const diffSec = Math.floor((now - quizStartTime) / 1000);
+        const mins = String(Math.floor(diffSec / 60)).padStart(2, '0');
+        const secs = String(diffSec % 60).padStart(2, '0');
+        document.getElementById('quiz-timer').textContent = `${mins}:${secs}`;
+      }, 1000);
+    }
+
+    function renderQuestion() {
+      const q = questionBank[currentQIndex];
+      
+      // Progress & Info
+      document.getElementById('current-q-num').textContent = currentQIndex + 1;
+      document.getElementById('q-category').textContent = q.cat;
+      const progressPercent = ((currentQIndex + 1) / questionBank.length) * 100;
+      document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+
+      // Question Texts
+      const qTextID = document.getElementById('question-text-id');
+      const qTextEN = document.getElementById('question-text-en');
+
+      if (currentLang === 'id') {
+        qTextID.textContent = `${currentQIndex + 1}. ${q.qID}`;
+        qTextEN.classList.add('hidden');
+      } else if (currentLang === 'en') {
+        qTextID.textContent = `${currentQIndex + 1}. ${q.qEN}`;
+        qTextEN.classList.add('hidden');
+      } else { // Dual
+        qTextID.textContent = `${currentQIndex + 1}. ${q.qID}`;
+        qTextEN.textContent = q.qEN;
+        qTextEN.classList.remove('hidden');
+      }
+
+      // Render Options
+      const optionsContainer = document.getElementById('options-container');
+      optionsContainer.innerHTML = '';
+
+      const userAns = userAnswers[currentQIndex];
+
+      q.options.forEach(opt => {
+        const optBtn = document.createElement('button');
+        optBtn.onclick = () => selectOption(opt.id);
+        
+        let btnClasses = "w-full p-4 rounded-2xl text-left border-2 transition-all flex items-start gap-3 text-sm md:text-base font-semibold ";
+
+        if (userAns) {
+          // Question already answered
+          if (opt.id === q.answer) {
+            btnClasses += "border-emerald-500 bg-emerald-50 text-emerald-900 ";
+          } else if (userAns === opt.id) {
+            btnClasses += "border-rose-500 bg-rose-50 text-rose-900 ";
+          } else {
+            btnClasses += "border-slate-100 bg-slate-50 text-slate-400 opacity-60 ";
+          }
+        } else {
+          // Not answered yet
+          btnClasses += "border-slate-200 bg-white hover:border-blue-400 hover:bg-blue-50/50 text-slate-700 ";
+        }
+
+        optBtn.className = btnClasses;
+
+        let optContent = '';
+        if (currentLang === 'id') optContent = opt.textID;
+        else if (currentLang === 'en') optContent = opt.textEN;
+        else optContent = `<span>${opt.textID}</span> <span class="text-xs text-slate-400 font-normal italic block">${opt.textEN}</span>`;
+
+        optBtn.innerHTML = `
+          <span class="w-7 h-7 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">${opt.id}</span>
+          <div class="flex-grow">${optContent}</div>
+        `;
+
+        optionsContainer.appendChild(optBtn);
+      });
+
+      // Feedback display
+      const feedbackBox = document.getElementById('feedback-box');
+      if (userAns) {
+        feedbackBox.classList.remove('hidden');
+        const isCorrect = userAns === q.answer;
+        if (isCorrect) {
+          feedbackBox.className = "p-4 rounded-2xl text-sm font-medium transition-all bg-emerald-100 text-emerald-900 border border-emerald-200";
+          document.getElementById('feedback-title').innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i> Correct / Benar!`;
+        } else {
+          feedbackBox.className = "p-4 rounded-2xl text-sm font-medium transition-all bg-rose-100 text-rose-900 border border-rose-200";
+          document.getElementById('feedback-title').innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i> Incorrect / Less Accurate`;
+        }
+
+        const explain = currentLang === 'en' ? q.explainEN : q.explainID;
+        document.getElementById('feedback-desc').textContent = explain;
+      } else {
+        feedbackBox.classList.add('hidden');
+      }
+
+      // Prev/Next buttons
+      document.getElementById('prev-btn').disabled = currentQIndex === 0;
+      const nextBtn = document.getElementById('next-btn');
+      if (currentQIndex === questionBank.length - 1) {
+        nextBtn.innerHTML = `Selesai / Finish <i class="fa-solid fa-check mr-1"></i>`;
+        nextBtn.className = "px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-xl shadow-md";
+      } else {
+        nextBtn.innerHTML = `Selanjutnya <i class="fa-solid fa-chevron-right ml-1"></i>`;
+        nextBtn.className = "px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-md";
+      }
+
+      updateLiveScore();
+    }
+
+    function selectOption(optionId) {
+      if (userAnswers[currentQIndex]) return; // Prevent changing answer once selected
+      userAnswers[currentQIndex] = optionId;
+      renderQuestion();
+    }
+
+    function navigateQuestion(direction) {
+      if (direction === 1 && currentQIndex === questionBank.length - 1) {
+        finishQuiz();
+        return;
+      }
+      currentQIndex = Math.max(0, Math.min(questionBank.length - 1, currentQIndex + direction));
+      renderQuestion();
+    }
+
+    function updateLiveScore() {
+      let correct = 0;
+      Object.keys(userAnswers).forEach(idx => {
+        if (userAnswers[idx] === questionBank[idx].answer) correct++;
+      });
+      const score = Math.round((correct / questionBank.length) * 100);
+      document.getElementById('live-score').textContent = score;
+    }
+
+    function finishQuiz() {
+      clearInterval(quizTimerInterval);
+
+      let correctCount = 0;
+      questionBank.forEach((q, idx) => {
+        if (userAnswers[idx] === q.answer) correctCount++;
+      });
+
+      const finalScore = Math.round((correctCount / questionBank.length) * 100);
+      const totalTimeStr = document.getElementById('quiz-timer').textContent;
+
+      // Render Result Screen
+      document.getElementById('quiz-active-screen').classList.add('hidden');
+      document.getElementById('quiz-result-screen').classList.remove('hidden');
+
+      document.getElementById('final-score-val').textContent = finalScore;
+      document.getElementById('correct-count-val').textContent = `${correctCount}/${questionBank.length}`;
+      document.getElementById('final-time-val').textContent = totalTimeStr;
+
+      const badgeIcon = document.getElementById('result-badge-icon');
+      if (finalScore >= 80) {
+        badgeIcon.className = "w-24 h-24 rounded-full flex items-center justify-center mx-auto text-4xl shadow-inner bg-amber-100 text-amber-600";
+        badgeIcon.textContent = "🏆";
+        document.getElementById('result-title').textContent = "Luar Biasa! / Excellent!";
+      } else if (finalScore >= 60) {
+        badgeIcon.className = "w-24 h-24 rounded-full flex items-center justify-center mx-auto text-4xl shadow-inner bg-blue-100 text-blue-600";
+        badgeIcon.textContent = "🌟";
+        document.getElementById('result-title').textContent = "Bagus sekali! / Good Job!";
+      } else {
+        badgeIcon.className = "w-24 h-24 rounded-full flex items-center justify-center mx-auto text-4xl shadow-inner bg-slate-100 text-slate-600";
+        badgeIcon.textContent = "📚";
+        document.getElementById('result-title').textContent = "Tetap Semangat! / Keep Learning!";
+      }
+
+      // Render Detailed Breakdown List
+      const breakdownList = document.getElementById('answers-breakdown-list');
+      breakdownList.innerHTML = '';
+
+      questionBank.forEach((q, idx) => {
+        const userAns = userAnswers[idx];
+        const isCorrect = userAns === q.answer;
+
+        const item = document.createElement('div');
+        item.className = `p-4 rounded-2xl border text-sm flex items-start gap-3 ${isCorrect ? 'bg-emerald-50/50 border-emerald-200' : 'bg-rose-50/50 border-rose-200'}`;
+
+        item.innerHTML = `
+          <div class="mt-0.5">${isCorrect ? '<i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i>' : '<i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i>'}</div>
+          <div class="flex-grow space-y-1">
+            <div class="font-bold text-slate-800">${idx + 1}. ${q.qID}</div>
+            <div class="text-xs text-slate-500 italic">${q.qEN}</div>
+            <div class="text-xs font-semibold pt-1">
+              <span>Jawabanmu: <strong class="${isCorrect ? 'text-emerald-700' : 'text-rose-700'}">${userAns || 'Tidak diisi'}</strong></span> | 
+              <span>Kunci: <strong class="text-emerald-700">${q.answer}</strong></span>
+            </div>
+            <div class="text-xs text-slate-600 bg-white/70 p-2 rounded-lg border mt-1">${q.explainID}</div>
+          </div>
+        `;
+
+        breakdownList.appendChild(item);
+      });
+
+      // Prepare Printable Certificate PDF view
+      document.getElementById('pdf-user-name').textContent = userName;
+      document.getElementById('pdf-date').textContent = new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+      document.getElementById('pdf-score').textContent = finalScore;
+      document.getElementById('pdf-correct').textContent = `${correctCount} / ${questionBank.length}`;
+      document.getElementById('pdf-time').textContent = totalTimeStr;
+    }
+
+    function resetQuiz() {
+      document.getElementById('quiz-result-screen').classList.add('hidden');
+      document.getElementById('quiz-start-screen').classList.remove('hidden');
+    }
+
+    // --- DOWNLOAD / PRINT PDF REPORT ---
+    function downloadPDFReport() {
+      window.print();
+    }
+  </script>
+</body>
+</html>
